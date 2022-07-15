@@ -1,0 +1,100 @@
+
+package leyout;
+
+
+import javax.swing.JOptionPane;
+
+
+public class BancoDeDados {
+  
+        private String[] memoriaPadrao = new String[100];
+        private int  tamanhoM;
+        
+        
+       private String[] memoria_2 = new String[tamanhoM]; 
+    
+    public  BancoDeDados()
+    {
+       
+       
+    }
+
+    //false = memoria padrao
+        // true = memoria nova
+    
+private boolean activeMemoria = false;
+    
+
+
+private void sentralDememoriaActive(boolean ac){
+    
+    if(ac == false && activeMemoria==false ){
+       JOptionPane.showMessageDialog(null, "Esta memoria ja esta desabilitada","Error", JOptionPane.ERROR_MESSAGE); 
+    }
+    
+    else if(ac == true && activeMemoria==false){
+       activeMemoria = true; 
+    }
+    else if(ac == true && activeMemoria==true){
+       JOptionPane.showMessageDialog(null, "Esta memoria ja esta ativada","Error", JOptionPane.ERROR_MESSAGE); 
+
+    }
+      else if(ac == false && activeMemoria==true){
+        activeMemoria = false;
+    }
+}
+    
+    
+ public void aumentMemoriry(int tamanho){
+     
+     if(activeMemoria == true){
+       this.tamanhoM = tamanho;
+      
+     }
+     else{
+        JOptionPane.showMessageDialog(null, "Esta memoria nao esta ativada para o aumento","Error", JOptionPane.ERROR_MESSAGE); 
+     }
+     
+ }
+ 
+ 
+ 
+ public  int idAleatorio(){
+    
+     int aleatorio = 0;
+     
+     return aleatorio; 
+ }
+ 
+ 
+public void gravar(int id, String dado){
+    
+    if(activeMemoria == true){
+        memoria_2[id] = dado ;
+    }
+    else{
+       memoriaPadrao[id] = dado;
+    }
+}
+ 
+
+
+public String conexao_class(){
+    return "Conexao aberta";
+}
+
+
+
+public String Consultar(int id ){
+    
+    if(activeMemoria == true){
+       return memoria_2[id]  ;
+    }
+    else{
+      return memoriaPadrao[id];
+    }
+ 
+}
+
+
+}
